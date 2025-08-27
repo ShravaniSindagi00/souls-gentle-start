@@ -2,41 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* OurSoulss Design System - Mental Health Platform
+All colors MUST be HSL for proper theming.
 */
 
 @layer base {
   :root {
+    /* Core Brand Colors */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --foreground: 200 100% 15%;
+    
+    /* Calming Teal Primary */
+    --primary: 200 100% 25%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 200 80% 40%;
+    --primary-lighter: 200 60% 85%;
+    
+    /* Warm Golden Accent */
+    --accent: 45 95% 65%;
+    --accent-foreground: 200 100% 15%;
+    --accent-light: 45 100% 80%;
+    --accent-lighter: 45 100% 95%;
+    
+    /* Soft Supporting Colors */
+    --secondary: 210 30% 96%;
+    --secondary-foreground: 200 80% 20%;
+    
+    --muted: 210 20% 94%;
+    --muted-foreground: 200 30% 45%;
+    
+    /* Wellness Colors */
+    --wellness: 140 60% 50%;
+    --wellness-foreground: 0 0% 100%;
+    --wellness-light: 140 40% 85%;
+    
+    /* Trust & Safety */
+    --trust: 220 80% 60%;
+    --trust-foreground: 0 0% 100%;
+    
+    /* Card & UI */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 200 100% 15%;
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --popover-foreground: 200 100% 15%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 210 20% 88%;
+    --input: 210 20% 92%;
+    --ring: 200 100% 25%;
+    
+    --radius: 0.75rem;
+    
+    /* Beautiful Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-light)) 50%, hsl(var(--accent)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%);
+    --gradient-wellness: linear-gradient(120deg, hsl(var(--wellness)) 0%, hsl(var(--trust)) 100%);
+    --gradient-accent: linear-gradient(90deg, hsl(var(--accent)) 0%, hsl(var(--accent-light)) 100%);
+    
+    /* Elegant Shadows */
+    --shadow-soft: 0 4px 20px hsl(var(--primary) / 0.1);
+    --shadow-card: 0 8px 40px hsl(var(--primary) / 0.08);
+    --shadow-hero: 0 20px 60px hsl(var(--primary) / 0.15);
+    --shadow-floating: 0 12px 48px hsl(var(--accent) / 0.2);
+    
+    /* Smooth Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,41 +90,53 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 200 40% 8%;
+    --foreground: 210 40% 95%;
+    
+    --primary: 200 80% 70%;
+    --primary-foreground: 200 40% 8%;
+    --primary-light: 200 60% 50%;
+    --primary-lighter: 200 40% 20%;
+    
+    --accent: 45 90% 70%;
+    --accent-foreground: 200 40% 8%;
+    --accent-light: 45 80% 60%;
+    --accent-lighter: 45 60% 15%;
+    
+    --secondary: 200 20% 12%;
+    --secondary-foreground: 210 30% 85%;
+    
+    --muted: 200 15% 15%;
+    --muted-foreground: 210 20% 65%;
+    
+    --wellness: 140 50% 60%;
+    --wellness-foreground: 200 40% 8%;
+    --wellness-light: 140 30% 20%;
+    
+    --trust: 220 70% 70%;
+    --trust-foreground: 200 40% 8%;
+    
+    --card: 200 30% 10%;
+    --card-foreground: 210 40% 95%;
+    
+    --popover: 200 30% 10%;
+    --popover-foreground: 210 40% 95%;
+    
+    --destructive: 0 75% 65%;
+    --destructive-foreground: 200 40% 8%;
+    
+    --border: 200 20% 20%;
+    --input: 200 15% 18%;
+    --ring: 200 80% 70%;
+    
+    --sidebar-background: 200 30% 8%;
+    --sidebar-foreground: 210 30% 85%;
+    --sidebar-primary: 200 80% 70%;
+    --sidebar-primary-foreground: 200 40% 8%;
+    --sidebar-accent: 200 20% 15%;
+    --sidebar-accent-foreground: 210 30% 85%;
+    --sidebar-border: 200 20% 18%;
+    --sidebar-ring: 200 80% 70%;
   }
 }
 
