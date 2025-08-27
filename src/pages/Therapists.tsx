@@ -147,7 +147,6 @@ const Therapists = () => {
                   <SelectValue placeholder="All Specialties" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Specialties</SelectItem>
                   <SelectItem value="Anxiety">Anxiety</SelectItem>
                   <SelectItem value="Depression">Depression</SelectItem>
                   <SelectItem value="PTSD">PTSD</SelectItem>
@@ -162,7 +161,6 @@ const Therapists = () => {
                   <SelectValue placeholder="All Availability" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Availability</SelectItem>
                   <SelectItem value="today">Available Today</SelectItem>
                   <SelectItem value="tomorrow">Available Tomorrow</SelectItem>
                 </SelectContent>
