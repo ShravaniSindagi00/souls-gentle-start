@@ -1,21 +1,22 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./components/layout/Layout";
-import Home from "./pages/Home";
-import Therapists from "./pages/Therapists";
-import TherapistProfile from "./pages/TherapistProfile";
-import BookingFlow from "./pages/BookingFlow";
-import Dashboard from "./pages/Dashboard";
-import AITherapy from "./pages/AITherapy";
-import Wellness from "./pages/Wellness";
-import B2B from "./pages/B2B";
-import About from "./pages/About";
-import NotFound from "./pages/NotFound";
+import { Toaster } from '@/components/ui/toaster'
+import { Toaster as Sonner } from '@/components/ui/sonner'
+import { TooltipProvider } from '@/components/ui/tooltip'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Layout from './components/layout/Layout'
+import Home from './pages/Home'
+import Therapists from './pages/Therapists'
+import TherapistProfile from './pages/TherapistProfile'
+import BookingFlow from './pages/BookingFlow'
+import Dashboard from './pages/Dashboard'
+import AITherapy from './pages/AITherapy'
+import Wellness from './pages/Wellness'
+import B2B from './pages/B2B'
+import About from './pages/About'
+import Reviews from './pages/Reviews'
+import NotFound from './pages/NotFound'
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient()
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/wellness" element={<Wellness />} />
             <Route path="/b2b" element={<B2B />} />
             <Route path="/about" element={<About />} />
+            <Route path="/reviews" element={<Reviews />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
@@ -41,6 +43,6 @@ const App = () => (
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
-);
+)
 
-export default App;
+export default App
