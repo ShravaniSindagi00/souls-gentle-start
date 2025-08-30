@@ -1,22 +1,22 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Heart, Menu, X, User } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
+import { Heart, Menu, X, User } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const location = useLocation()
 
   const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/therapists", label: "Find Therapist" },
-    { href: "/wellness", label: "Wellness" },
-    { href: "/b2b", label: "For Business" },
-    { href: "/about", label: "About Us" },
-  ];
+    { href: '/', label: 'Home' },
+    { href: '/reviews', label: 'Reviews' },
+    { href: '/about', label: 'About Us' },
+    { href: '/blog', label: 'Blog' },
+    { href: '/contact-us', label: 'Contact Us' },
+  ]
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => location.pathname === path
 
   return (
     <header className="bg-card/80 backdrop-blur-md border-b border-border sticky top-0 z-50">
@@ -39,10 +39,8 @@ const Header = () => {
                 key={item.href}
                 to={item.href}
                 className={cn(
-                  "relative text-sm font-medium transition-colors hover:text-primary",
-                  isActive(item.href) 
-                    ? "text-primary" 
-                    : "text-muted-foreground"
+                  'relative text-sm font-medium transition-colors hover:text-primary',
+                  isActive(item.href) ? 'text-primary' : 'text-muted-foreground'
                 )}
               >
                 {item.label}
@@ -55,16 +53,19 @@ const Header = () => {
 
           {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-3">
-            <Link to="/dashboard">
-              <Button variant="outline" size="sm" className="group">
-                <User className="h-4 w-4 mr-2 group-hover:text-primary transition-colors" />
-                Dashboard
-              </Button>
-            </Link>
             <Link to="/book">
-              <Button variant="default" size="sm" className="bg-gradient-accent text-accent-foreground hover:shadow-floating">
+              <Button
+                variant="default"
+                size="sm"
+                className="bg-gradient-accent text-accent-foreground hover:shadow-floating"
+              >
                 Book Appointment
               </Button>
+            </Link>
+            <Link to="/login">
+              <div className="w-10 h-10 bg-muted hover:bg-primary hover:text-primary-foreground rounded-full flex items-center justify-center transition-colors cursor-pointer">
+                <User className="h-5 w-5" />
+              </div>
             </Link>
           </div>
 
@@ -91,10 +92,10 @@ const Header = () => {
                   to={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
-                    "block px-4 py-2 rounded-lg text-sm font-medium transition-colors",
+                    'block px-4 py-2 rounded-lg text-sm font-medium transition-colors',
                     isActive(item.href)
-                      ? "bg-primary/10 text-primary"
-                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                      ? 'bg-primary/10 text-primary'
+                      : 'text-muted-foreground hover:bg-muted hover:text-foreground'
                   )}
                 >
                   {item.label}
@@ -102,15 +103,19 @@ const Header = () => {
               ))}
             </nav>
             <div className="flex flex-col space-y-2 mt-4 px-4">
-              <Link to="/dashboard" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button variant="outline" size="sm" className="w-full">
-                  <User className="h-4 w-4 mr-2" />
-                  Dashboard
+              <Link to="/book" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button
+                  variant="default"
+                  size="sm"
+                  className="w-full bg-gradient-accent text-accent-foreground"
+                >
+                  Book Appointment
                 </Button>
               </Link>
-              <Link to="/book" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button variant="default" size="sm" className="w-full bg-gradient-accent text-accent-foreground">
-                  Book Appointment
+              <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button variant="outline" size="sm" className="w-full">
+                  <User className="h-4 w-4 mr-2" />
+                  Login
                 </Button>
               </Link>
             </div>
@@ -118,7 +123,7 @@ const Header = () => {
         )}
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

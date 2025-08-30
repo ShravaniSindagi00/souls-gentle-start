@@ -16,6 +16,7 @@ import {
   Star,
   ArrowRight,
   CheckCircle,
+  Quote,
 } from 'lucide-react'
 import heroImage from '@/assets/hero-image.jpg'
 
@@ -159,6 +160,203 @@ const Home = () => {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Inspirational Quote Section */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="relative bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-8 md:p-12 lg:p-16 shadow-2xl overflow-hidden">
+            {/* Background pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+            </div>
+
+            {/* Quote content */}
+            <div className="relative flex items-center justify-between">
+              <div className="flex-1 text-center pr-0 lg:pr-8">
+                <blockquote className="text-xl md:text-2xl lg:text-3xl font-medium text-white leading-relaxed">
+                  "Alone, the weight on your heart may feel insurmountable. But
+                  together, with the strength of our shared spirits, we can lift
+                  any burden."
+                </blockquote>
+              </div>
+
+              {/* Large quotation mark */}
+              <div className="hidden lg:flex items-center justify-center">
+                <Quote className="h-20 w-20 text-white/30 transform rotate-180" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Discover Your Path to Wellness Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+              Discover Your Path to Wellness
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Choose the right support for you. Whether you need professional
+              guidance or empathetic listening, we offer flexible options to
+              suit your needs.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Empathic Listener Card */}
+            <Card className="border-0 shadow-soft hover:shadow-card transition-all duration-300 bg-white">
+              <CardContent className="p-8">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-lg bg-gradient-trust flex items-center justify-center">
+                    <Heart className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-display font-bold text-foreground mb-2">
+                    Empathic Listener
+                  </h3>
+                  <div className="text-3xl font-bold text-primary mb-1">
+                    ₹349
+                    <span className="text-lg font-normal text-muted-foreground ml-2">
+                      per session
+                    </span>
+                  </div>
+                </div>
+
+                <div className="space-y-4 mb-8">
+                  <h4 className="text-lg font-semibold text-foreground">
+                    Looking to make your journey a little easier?
+                  </h4>
+                  <p className="text-muted-foreground leading-relaxed">
+                    An empathic listener will provide supportive and
+                    compassionate listening to help you manage your thoughts and
+                    feelings. You'll be encouraged to reflect on what's on your
+                    mind and receive non-judgmental, practical insights to help
+                    you feel better.
+                  </p>
+                </div>
+
+                <div className="space-y-3 mb-8">
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <CheckCircle className="h-4 w-4 text-primary" />
+                    </div>
+                    <span className="text-sm text-foreground">
+                      40-min empathic listener session
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <CheckCircle className="h-4 w-4 text-primary" />
+                    </div>
+                    <span className="text-sm text-foreground">
+                      Use this space to safely vent and discuss your problems
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <CheckCircle className="h-4 w-4 text-primary" />
+                    </div>
+                    <span className="text-sm text-foreground">
+                      Complete listener-provided tasks and activities
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <CheckCircle className="h-4 w-4 text-primary" />
+                    </div>
+                    <span className="text-sm text-foreground">
+                      We listen to you throughout the process
+                    </span>
+                  </div>
+                </div>
+
+                <Link to="/book" className="block">
+                  <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-800 font-semibold py-3">
+                    BOOK APPOINTMENT
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            {/* Professional Therapy Card */}
+            <Card className="border-0 shadow-soft hover:shadow-card transition-all duration-300 bg-gradient-to-br from-slate-800 to-slate-900 text-white">
+              <CardContent className="p-8">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-lg bg-white/20 flex items-center justify-center">
+                    <Users className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-display font-bold text-white mb-2">
+                    Professional Therapy
+                  </h3>
+                  <div className="text-3xl font-bold text-white mb-1">
+                    ₹669
+                    <span className="text-lg font-normal text-white/70 ml-2">
+                      per session
+                    </span>
+                  </div>
+                </div>
+
+                <div className="space-y-4 mb-8">
+                  <h4 className="text-lg font-semibold text-white">
+                    Are you ready?
+                  </h4>
+                  <p className="text-white/80 leading-relaxed">
+                    From relationship issues, anxiety, depression, addiction, or
+                    other personal challenges including mental health issues,
+                    life transitions stress, and anxiety, minor stress. Our
+                    experienced therapists are here to help you navigate life's
+                    difficulties. Let's collaborate to give you peace of mind
+                    and a brighter future.
+                  </p>
+                </div>
+
+                <div className="space-y-3 mb-8">
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <CheckCircle className="h-4 w-4 text-white" />
+                    </div>
+                    <span className="text-sm text-white">
+                      40-min professional therapy session
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <CheckCircle className="h-4 w-4 text-white" />
+                    </div>
+                    <span className="text-sm text-white">
+                      Implement personal strategies and advice
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <CheckCircle className="h-4 w-4 text-white" />
+                    </div>
+                    <span className="text-sm text-white">
+                      Discuss your concerns openly and safely
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <CheckCircle className="h-4 w-4 text-white" />
+                    </div>
+                    <span className="text-sm text-white">
+                      Receive insights with renewed professional perspectives
+                    </span>
+                  </div>
+                </div>
+
+                <Link to="/book" className="block">
+                  <Button className="w-full bg-white/90 hover:bg-white text-slate-800 font-semibold py-3">
+                    BOOK APPOINTMENT
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
