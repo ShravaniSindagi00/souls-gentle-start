@@ -1,15 +1,22 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { 
-  Heart, 
-  Brain, 
-  Moon, 
-  Activity, 
-  BookOpen, 
-  Users, 
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import {
+  Heart,
+  Brain,
+  Moon,
+  Activity,
+  BookOpen,
+  Users,
   Clock,
   Play,
   CheckCircle,
@@ -17,162 +24,186 @@ import {
   TrendingUp,
   Target,
   Smile,
-  Zap
-} from "lucide-react";
+  Zap,
+} from 'lucide-react'
+import heroImage from '@/assets/hero-image.jpg'
+import supportiveInteractions from '@/assets/supportive-interactions.jpg'
+import therapistClientSession from '@/assets/therapist-client-session.jpg'
+import videoCallTherapy from '@/assets/video-call-therapy.jpg'
 
 const Wellness = () => {
-  const [completedActivities, setCompletedActivities] = useState<string[]>([]);
+  const [completedActivities, setCompletedActivities] = useState<string[]>([])
 
   const markComplete = (activityId: string) => {
-    setCompletedActivities(prev => 
-      prev.includes(activityId) 
-        ? prev.filter(id => id !== activityId)
+    setCompletedActivities((prev) =>
+      prev.includes(activityId)
+        ? prev.filter((id) => id !== activityId)
         : [...prev, activityId]
-    );
-  };
+    )
+  }
 
   const mindfulnessActivities = [
     {
-      id: "breathing",
-      title: "Deep Breathing Exercise",
-      description: "A 5-minute guided breathing session to reduce anxiety and stress",
-      duration: "5 min",
-      difficulty: "Beginner",
-      category: "Stress Relief",
-      benefits: ["Reduces anxiety", "Improves focus", "Lowers heart rate"]
+      id: 'breathing',
+      title: 'Deep Breathing Exercise',
+      description:
+        'A 5-minute guided breathing session to reduce anxiety and stress',
+      duration: '5 min',
+      difficulty: 'Beginner',
+      category: 'Stress Relief',
+      benefits: ['Reduces anxiety', 'Improves focus', 'Lowers heart rate'],
     },
     {
-      id: "body-scan",
-      title: "Progressive Body Scan",
-      description: "Release tension by systematically relaxing each part of your body",
-      duration: "15 min",
-      difficulty: "Intermediate",
-      category: "Relaxation",
-      benefits: ["Reduces muscle tension", "Improves sleep", "Increases awareness"]
+      id: 'body-scan',
+      title: 'Progressive Body Scan',
+      description:
+        'Release tension by systematically relaxing each part of your body',
+      duration: '15 min',
+      difficulty: 'Intermediate',
+      category: 'Relaxation',
+      benefits: [
+        'Reduces muscle tension',
+        'Improves sleep',
+        'Increases awareness',
+      ],
     },
     {
-      id: "gratitude",
-      title: "Gratitude Meditation",
-      description: "Cultivate appreciation and positive emotions through guided reflection",
-      duration: "10 min",
-      difficulty: "Beginner",
-      category: "Positivity",
-      benefits: ["Boosts mood", "Increases optimism", "Strengthens relationships"]
+      id: 'gratitude',
+      title: 'Gratitude Meditation',
+      description:
+        'Cultivate appreciation and positive emotions through guided reflection',
+      duration: '10 min',
+      difficulty: 'Beginner',
+      category: 'Positivity',
+      benefits: [
+        'Boosts mood',
+        'Increases optimism',
+        'Strengthens relationships',
+      ],
     },
     {
-      id: "mindful-walking",
-      title: "Mindful Walking",
-      description: "Transform your walk into a moving meditation practice",
-      duration: "20 min",
-      difficulty: "Beginner",
-      category: "Movement",
-      benefits: ["Combines exercise", "Improves mood", "Connects with nature"]
-    }
-  ];
+      id: 'mindful-walking',
+      title: 'Mindful Walking',
+      description: 'Transform your walk into a moving meditation practice',
+      duration: '20 min',
+      difficulty: 'Beginner',
+      category: 'Movement',
+      benefits: ['Combines exercise', 'Improves mood', 'Connects with nature'],
+    },
+  ]
 
   const wellnessTracks = [
     {
-      id: "anxiety",
-      title: "Anxiety Management Program",
-      description: "7-day comprehensive program for managing anxiety with CBT techniques",
-      duration: "7 days",
+      id: 'anxiety',
+      title: 'Anxiety Management Program',
+      description:
+        '7-day comprehensive program for managing anxiety with CBT techniques',
+      duration: '7 days',
       sessions: 14,
-      level: "All Levels",
-      color: "trust",
+      level: 'All Levels',
+      color: 'trust',
       modules: [
-        "Understanding Anxiety",
-        "Breathing Techniques", 
-        "Cognitive Restructuring",
-        "Exposure Therapy Basics",
-        "Lifestyle Changes",
-        "Relapse Prevention",
-        "Long-term Strategies"
-      ]
+        'Understanding Anxiety',
+        'Breathing Techniques',
+        'Cognitive Restructuring',
+        'Exposure Therapy Basics',
+        'Lifestyle Changes',
+        'Relapse Prevention',
+        'Long-term Strategies',
+      ],
     },
     {
-      id: "sleep",
-      title: "Better Sleep Wellness Track",
-      description: "Improve your sleep quality with proven techniques and habits",
-      duration: "10 days",
+      id: 'sleep',
+      title: 'Better Sleep Wellness Track',
+      description:
+        'Improve your sleep quality with proven techniques and habits',
+      duration: '10 days',
       sessions: 10,
-      level: "Beginner",
-      color: "wellness",
+      level: 'Beginner',
+      color: 'wellness',
       modules: [
-        "Sleep Hygiene Basics",
-        "Creating Sleep Environment",
-        "Wind-Down Routines",
-        "Managing Sleep Anxiety",
-        "Natural Sleep Aids"
-      ]
+        'Sleep Hygiene Basics',
+        'Creating Sleep Environment',
+        'Wind-Down Routines',
+        'Managing Sleep Anxiety',
+        'Natural Sleep Aids',
+      ],
     },
     {
-      id: "confidence",
-      title: "Building Self-Confidence",
-      description: "Develop lasting self-confidence through practical exercises",
-      duration: "14 days",
+      id: 'confidence',
+      title: 'Building Self-Confidence',
+      description:
+        'Develop lasting self-confidence through practical exercises',
+      duration: '14 days',
       sessions: 20,
-      level: "Intermediate",
-      color: "accent",
+      level: 'Intermediate',
+      color: 'accent',
       modules: [
-        "Understanding Self-Worth",
-        "Challenging Negative Thoughts",
-        "Setting Boundaries",
-        "Communication Skills",
-        "Celebrating Achievements"
-      ]
-    }
-  ];
+        'Understanding Self-Worth',
+        'Challenging Negative Thoughts',
+        'Setting Boundaries',
+        'Communication Skills',
+        'Celebrating Achievements',
+      ],
+    },
+  ]
 
   const dailyInsights = [
     {
-      type: "tip",
-      title: "Morning Mindfulness",
-      content: "Start your day with 3 deep breaths and set a positive intention. This simple practice can improve your entire day's outlook.",
-      icon: Brain
+      type: 'tip',
+      title: 'Morning Mindfulness',
+      content:
+        "Start your day with 3 deep breaths and set a positive intention. This simple practice can improve your entire day's outlook.",
+      icon: Brain,
     },
     {
-      type: "fact",
-      title: "Did You Know?",
-      content: "Just 10 minutes of daily meditation can reduce stress hormones by up to 23% according to recent studies.",
-      icon: TrendingUp
+      type: 'fact',
+      title: 'Did You Know?',
+      content:
+        'Just 10 minutes of daily meditation can reduce stress hormones by up to 23% according to recent studies.',
+      icon: TrendingUp,
     },
     {
-      type: "motivation",
-      title: "Daily Affirmation",
-      content: "You are stronger than you think, braver than you feel, and more loved than you know. Your mental health journey matters.",
-      icon: Heart
-    }
-  ];
+      type: 'motivation',
+      title: 'Daily Affirmation',
+      content:
+        'You are stronger than you think, braver than you feel, and more loved than you know. Your mental health journey matters.',
+      icon: Heart,
+    },
+  ]
 
   const wellnessResources = [
     {
-      category: "Articles",
+      category: 'Articles',
       items: [
-        { title: "Understanding Anxiety: A Complete Guide", readTime: "8 min" },
-        { title: "Building Resilience in Difficult Times", readTime: "6 min" },
-        { title: "The Science of Happiness", readTime: "10 min" },
-        { title: "Healthy Boundaries: Setting and Maintaining", readTime: "7 min" }
-      ]
+        { title: 'Understanding Anxiety: A Complete Guide', readTime: '8 min' },
+        { title: 'Building Resilience in Difficult Times', readTime: '6 min' },
+        { title: 'The Science of Happiness', readTime: '10 min' },
+        {
+          title: 'Healthy Boundaries: Setting and Maintaining',
+          readTime: '7 min',
+        },
+      ],
     },
     {
-      category: "Videos",
+      category: 'Videos',
       items: [
-        { title: "Quick Stress Relief Techniques", readTime: "5 min" },
-        { title: "Meditation for Beginners", readTime: "12 min" },
-        { title: "Cognitive Behavioral Therapy Basics", readTime: "15 min" },
-        { title: "Managing Depression Naturally", readTime: "18 min" }
-      ]
+        { title: 'Quick Stress Relief Techniques', readTime: '5 min' },
+        { title: 'Meditation for Beginners', readTime: '12 min' },
+        { title: 'Cognitive Behavioral Therapy Basics', readTime: '15 min' },
+        { title: 'Managing Depression Naturally', readTime: '18 min' },
+      ],
     },
     {
-      category: "Tools",
+      category: 'Tools',
       items: [
-        { title: "Mood Tracker", readTime: "Daily use" },
-        { title: "Anxiety Assessment", readTime: "5 min" },
-        { title: "Goal Setting Worksheet", readTime: "15 min" },
-        { title: "Sleep Quality Tracker", readTime: "Daily use" }
-      ]
-    }
-  ];
+        { title: 'Mood Tracker', readTime: 'Daily use' },
+        { title: 'Anxiety Assessment', readTime: '5 min' },
+        { title: 'Goal Setting Worksheet', readTime: '15 min' },
+        { title: 'Sleep Quality Tracker', readTime: 'Daily use' },
+      ],
+    },
+  ]
 
   return (
     <div className="min-h-screen bg-background">
@@ -183,24 +214,34 @@ const Wellness = () => {
             Wellness & Growth Hub
           </h1>
           <p className="text-lg text-wellness-foreground/90 max-w-2xl mx-auto mb-8">
-            Personalized mental health activities, guided programs, and resources 
-            to support your wellness journey every step of the way.
+            Personalized mental health activities, guided programs, and
+            resources to support your wellness journey every step of the way.
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             <div className="bg-white/10 rounded-lg p-4 text-center">
               <Target className="h-8 w-8 text-wellness-foreground mx-auto mb-2" />
-              <div className="text-2xl font-bold text-wellness-foreground">50+</div>
-              <div className="text-sm text-wellness-foreground/80">Activities</div>
+              <div className="text-2xl font-bold text-wellness-foreground">
+                50+
+              </div>
+              <div className="text-sm text-wellness-foreground/80">
+                Activities
+              </div>
             </div>
             <div className="bg-white/10 rounded-lg p-4 text-center">
               <BookOpen className="h-8 w-8 text-wellness-foreground mx-auto mb-2" />
-              <div className="text-2xl font-bold text-wellness-foreground">12</div>
-              <div className="text-sm text-wellness-foreground/80">Programs</div>
+              <div className="text-2xl font-bold text-wellness-foreground">
+                12
+              </div>
+              <div className="text-sm text-wellness-foreground/80">
+                Programs
+              </div>
             </div>
             <div className="bg-white/10 rounded-lg p-4 text-center">
               <Users className="h-8 w-8 text-wellness-foreground mx-auto mb-2" />
-              <div className="text-2xl font-bold text-wellness-foreground">5k+</div>
+              <div className="text-2xl font-bold text-wellness-foreground">
+                5k+
+              </div>
               <div className="text-sm text-wellness-foreground/80">Members</div>
             </div>
           </div>
@@ -210,7 +251,9 @@ const Wellness = () => {
       <div className="container mx-auto px-4 py-12">
         {/* Daily Insights */}
         <section className="mb-12">
-          <h2 className="text-2xl font-display font-semibold mb-6">Today's Wellness Insights</h2>
+          <h2 className="text-2xl font-display font-semibold mb-6">
+            Today's Wellness Insights
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {dailyInsights.map((insight, index) => (
               <Card key={index} className="shadow-soft border-0">
@@ -220,7 +263,9 @@ const Wellness = () => {
                       <insight.icon className="h-6 w-6 text-wellness-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-foreground mb-2">{insight.title}</h3>
+                      <h3 className="font-semibold text-foreground mb-2">
+                        {insight.title}
+                      </h3>
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         {insight.content}
                       </p>
@@ -242,15 +287,21 @@ const Wellness = () => {
 
           <TabsContent value="activities" className="space-y-8">
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-display font-semibold">Mindfulness Activities</h2>
+              <h2 className="text-2xl font-display font-semibold">
+                Mindfulness Activities
+              </h2>
               <Badge variant="secondary">
-                {completedActivities.length} of {mindfulnessActivities.length} completed
+                {completedActivities.length} of {mindfulnessActivities.length}{' '}
+                completed
               </Badge>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {mindfulnessActivities.map((activity) => (
-                <Card key={activity.id} className="shadow-card border-0 group hover:shadow-floating transition-all duration-300">
+                <Card
+                  key={activity.id}
+                  className="shadow-card border-0 group hover:shadow-floating transition-all duration-300"
+                >
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
@@ -262,7 +313,11 @@ const Wellness = () => {
                         </CardDescription>
                       </div>
                       <Button
-                        variant={completedActivities.includes(activity.id) ? "secondary" : "default"}
+                        variant={
+                          completedActivities.includes(activity.id)
+                            ? 'secondary'
+                            : 'default'
+                        }
                         size="sm"
                         onClick={() => markComplete(activity.id)}
                         className="ml-4"
@@ -274,7 +329,7 @@ const Wellness = () => {
                         )}
                       </Button>
                     </div>
-                    
+
                     <div className="flex items-center gap-4 text-sm text-muted-foreground">
                       <div className="flex items-center gap-1">
                         <Clock className="h-4 w-4" />
@@ -302,13 +357,15 @@ const Wellness = () => {
                           ))}
                         </ul>
                       </div>
-                      
-                      <Button 
-                        variant="outline" 
+
+                      <Button
+                        variant="outline"
                         className="w-full"
                         disabled={completedActivities.includes(activity.id)}
                       >
-                        {completedActivities.includes(activity.id) ? "Completed" : "Start Activity"}
+                        {completedActivities.includes(activity.id)
+                          ? 'Completed'
+                          : 'Start Activity'}
                       </Button>
                     </div>
                   </CardContent>
@@ -319,20 +376,27 @@ const Wellness = () => {
 
           <TabsContent value="programs" className="space-y-8">
             <div>
-              <h2 className="text-2xl font-display font-semibold mb-2">Wellness Programs</h2>
-              <p className="text-muted-foreground">Structured programs designed to help you achieve specific mental health goals.</p>
+              <h2 className="text-2xl font-display font-semibold mb-2">
+                Wellness Programs
+              </h2>
+              <p className="text-muted-foreground">
+                Structured programs designed to help you achieve specific mental
+                health goals.
+              </p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
               {wellnessTracks.map((track) => (
                 <Card key={track.id} className="shadow-card border-0">
                   <CardHeader>
-                    <div className={`w-full h-32 bg-gradient-${track.color} rounded-lg flex items-center justify-center mb-4`}>
+                    <div
+                      className={`w-full h-32 bg-gradient-${track.color} rounded-lg flex items-center justify-center mb-4`}
+                    >
                       <BookOpen className="h-12 w-12 text-white" />
                     </div>
                     <CardTitle className="text-lg">{track.title}</CardTitle>
                     <CardDescription>{track.description}</CardDescription>
-                    
+
                     <div className="flex items-center gap-4 text-sm">
                       <div className="flex items-center gap-1">
                         <Clock className="h-4 w-4 text-muted-foreground" />
@@ -348,10 +412,15 @@ const Wellness = () => {
                   <CardContent>
                     <div className="space-y-4">
                       <div>
-                        <h4 className="font-medium text-sm mb-2">Program Modules:</h4>
+                        <h4 className="font-medium text-sm mb-2">
+                          Program Modules:
+                        </h4>
                         <ul className="space-y-1">
                           {track.modules.slice(0, 3).map((module, index) => (
-                            <li key={index} className="text-sm text-muted-foreground flex items-center gap-2">
+                            <li
+                              key={index}
+                              className="text-sm text-muted-foreground flex items-center gap-2"
+                            >
                               <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                               {module}
                             </li>
@@ -363,42 +432,163 @@ const Wellness = () => {
                           )}
                         </ul>
                       </div>
-                      
+
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 fill-accent text-accent" />
                         <span className="text-sm font-medium">4.8</span>
-                        <span className="text-sm text-muted-foreground">(124 reviews)</span>
+                        <span className="text-sm text-muted-foreground">
+                          (124 reviews)
+                        </span>
                       </div>
 
-                      <Button className="w-full">
-                        Start Program
-                      </Button>
+                      <Button className="w-full">Start Program</Button>
                     </div>
                   </CardContent>
                 </Card>
               ))}
             </div>
+
+            {/* Blog Content Section */}
+            <div className="mt-16">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-display font-bold text-foreground mb-4">
+                  Latest from Our Blog
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Explore insights, tips, and stories to support your mental
+                  health journey
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {[
+                  {
+                    id: 'anxiety',
+                    title:
+                      'Understanding Anxiety: Breaking Free from the Grip of Fear',
+                    summary:
+                      'Learn effective techniques to manage anxiety and regain control over your thoughts and emotions.',
+                    image: heroImage,
+                    category: 'ANXIETY',
+                    date: 'NOVEMBER 19, 2024',
+                    slug: 'understanding-anxiety-breaking-free-fear',
+                  },
+                  {
+                    id: 'stress',
+                    title:
+                      'Mastering Stress: Your Ultimate Guide to Finding Balance',
+                    summary:
+                      'Discover practical strategies to reduce stress and create a more balanced, peaceful life.',
+                    image: supportiveInteractions,
+                    category: 'STRESS',
+                    date: 'NOVEMBER 19, 2024',
+                    slug: 'mastering-stress-ultimate-guide-balance',
+                  },
+                  {
+                    id: 'depression',
+                    title: 'Unmasking Depression: The Silent Storm Within',
+                    summary:
+                      'Understanding depression and finding hope through proven therapeutic approaches and support.',
+                    image: therapistClientSession,
+                    category: 'DEPRESSION',
+                    date: 'NOVEMBER 19, 2024',
+                    slug: 'unmasking-depression-silent-storm',
+                  },
+                  {
+                    id: 'community',
+                    title:
+                      'Building Stronger Communities: Mental Health Awareness Workshop',
+                    summary:
+                      'Highlights from our community workshop on breaking stigma and promoting mental wellness.',
+                    image: videoCallTherapy,
+                    category: 'COMMUNITY',
+                    date: 'NOVEMBER 15, 2024',
+                    slug: 'building-stronger-communities-workshop',
+                  },
+                ].map((post) => (
+                  <Link
+                    key={post.id}
+                    to={`/blog/${post.slug}`}
+                    className="group"
+                  >
+                    <Card className="h-full shadow-card border-0 group-hover:shadow-floating transition-all duration-300">
+                      <div className="relative overflow-hidden rounded-t-lg">
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute top-4 left-4">
+                          <Badge
+                            variant="secondary"
+                            className="bg-white/90 text-primary font-medium"
+                          >
+                            {post.category}
+                          </Badge>
+                        </div>
+                      </div>
+                      <CardContent className="p-6">
+                        <div className="space-y-3">
+                          <div className="text-xs text-muted-foreground font-medium">
+                            ON {post.date}
+                          </div>
+                          <CardTitle className="text-lg leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                            {post.title}
+                          </CardTitle>
+                          <CardDescription className="text-sm leading-relaxed line-clamp-3">
+                            {post.summary}
+                          </CardDescription>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+
+              <div className="text-center mt-12">
+                <Link to="/blog">
+                  <Button variant="outline" size="lg" className="group">
+                    View All Articles
+                    <BookOpen className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </TabsContent>
 
           <TabsContent value="resources" className="space-y-8">
             <div>
-              <h2 className="text-2xl font-display font-semibold mb-2">Wellness Resources</h2>
-              <p className="text-muted-foreground">Educational content, tools, and materials to support your mental health journey.</p>
+              <h2 className="text-2xl font-display font-semibold mb-2">
+                Wellness Resources
+              </h2>
+              <p className="text-muted-foreground">
+                Educational content, tools, and materials to support your mental
+                health journey.
+              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {wellnessResources.map((category) => (
                 <Card key={category.category} className="shadow-card border-0">
                   <CardHeader>
-                    <CardTitle className="text-lg">{category.category}</CardTitle>
+                    <CardTitle className="text-lg">
+                      {category.category}
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
                       {category.items.map((item, index) => (
-                        <div key={index} className="flex items-center justify-between p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors cursor-pointer">
+                        <div
+                          key={index}
+                          className="flex items-center justify-between p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors cursor-pointer"
+                        >
                           <div>
-                            <div className="font-medium text-sm">{item.title}</div>
-                            <div className="text-xs text-muted-foreground">{item.readTime}</div>
+                            <div className="font-medium text-sm">
+                              {item.title}
+                            </div>
+                            <div className="text-xs text-muted-foreground">
+                              {item.readTime}
+                            </div>
                           </div>
                           <Zap className="h-4 w-4 text-accent" />
                         </div>
@@ -412,8 +602,12 @@ const Wellness = () => {
 
           <TabsContent value="progress" className="space-y-8">
             <div>
-              <h2 className="text-2xl font-display font-semibold mb-2">Your Wellness Journey</h2>
-              <p className="text-muted-foreground">Track your progress and celebrate your achievements.</p>
+              <h2 className="text-2xl font-display font-semibold mb-2">
+                Your Wellness Journey
+              </h2>
+              <p className="text-muted-foreground">
+                Track your progress and celebrate your achievements.
+              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -426,9 +620,15 @@ const Wellness = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-wellness mb-2">7.8</div>
-                    <div className="text-sm text-muted-foreground">Average mood this week</div>
-                    <div className="text-xs text-wellness mt-1">↑ 12% from last week</div>
+                    <div className="text-3xl font-bold text-wellness mb-2">
+                      7.8
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Average mood this week
+                    </div>
+                    <div className="text-xs text-wellness mt-1">
+                      ↑ 12% from last week
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -442,9 +642,15 @@ const Wellness = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-trust mb-2">{completedActivities.length}</div>
-                    <div className="text-sm text-muted-foreground">This month</div>
-                    <div className="text-xs text-trust mt-1">Goal: 20 activities</div>
+                    <div className="text-3xl font-bold text-trust mb-2">
+                      {completedActivities.length}
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      This month
+                    </div>
+                    <div className="text-xs text-trust mt-1">
+                      Goal: 20 activities
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -458,9 +664,15 @@ const Wellness = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-accent mb-2">14</div>
-                    <div className="text-sm text-muted-foreground">Consecutive days</div>
-                    <div className="text-xs text-accent mt-1">Personal best: 21 days</div>
+                    <div className="text-3xl font-bold text-accent mb-2">
+                      14
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Consecutive days
+                    </div>
+                    <div className="text-xs text-accent mt-1">
+                      Personal best: 21 days
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -469,36 +681,51 @@ const Wellness = () => {
             <Card className="shadow-card border-0">
               <CardHeader>
                 <CardTitle>Weekly Wellness Goals</CardTitle>
-                <CardDescription>Track your progress toward this week's wellness objectives</CardDescription>
+                <CardDescription>
+                  Track your progress toward this week's wellness objectives
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium">Complete 5 mindfulness activities</span>
-                      <span className="text-sm text-muted-foreground">{Math.min(completedActivities.length, 5)}/5</span>
+                      <span className="text-sm font-medium">
+                        Complete 5 mindfulness activities
+                      </span>
+                      <span className="text-sm text-muted-foreground">
+                        {Math.min(completedActivities.length, 5)}/5
+                      </span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-2">
-                      <div 
-                        className="h-2 bg-gradient-wellness rounded-full transition-all duration-300" 
-                        style={{ width: `${Math.min((completedActivities.length / 5) * 100, 100)}%` }}
+                      <div
+                        className="h-2 bg-gradient-wellness rounded-full transition-all duration-300"
+                        style={{
+                          width: `${Math.min(
+                            (completedActivities.length / 5) * 100,
+                            100
+                          )}%`,
+                        }}
                       />
                     </div>
                   </div>
-                  
+
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium">Log mood 7 times this week</span>
+                      <span className="text-sm font-medium">
+                        Log mood 7 times this week
+                      </span>
                       <span className="text-sm text-muted-foreground">6/7</span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-2">
                       <div className="w-[86%] h-2 bg-gradient-trust rounded-full" />
                     </div>
                   </div>
-                  
+
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium">Read 2 wellness articles</span>
+                      <span className="text-sm font-medium">
+                        Read 2 wellness articles
+                      </span>
                       <span className="text-sm text-muted-foreground">1/2</span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-2">
@@ -512,7 +739,7 @@ const Wellness = () => {
         </Tabs>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Wellness;
+export default Wellness
