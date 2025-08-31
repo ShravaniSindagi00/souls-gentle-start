@@ -19,6 +19,8 @@ import {
   Quote,
 } from 'lucide-react'
 import heroImage from '@/assets/hero-image.jpg'
+import professionalWomanImage from '@/assets/professional-woman-office.jpg'
+import aboutHeroWomanImage from '@/assets/about-hero-woman.jpg'
 
 const Home = () => {
   return (
@@ -355,6 +357,80 @@ const Home = () => {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Meet Our Experts Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+              Meet Our Experts
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Compassionate mental health professionals dedicated to your
+              well-being, ready to guide you on your journey toward a healthier,
+              happier life!
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Expert 1 - Payal Mishra */}
+            <Card className="border-0 shadow-soft hover:shadow-card transition-all duration-300 bg-white rounded-xl">
+              <CardContent className="p-8 text-center">
+                <div className="mb-6">
+                  <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden shadow-md">
+                    <img
+                      src={professionalWomanImage}
+                      alt="Payal Mishra - Professional Psychology"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-1">
+                    Payal Mishra
+                  </h3>
+                  <p className="text-primary font-medium mb-4">
+                    Professional Psychology
+                  </p>
+                </div>
+
+                <p className="text-muted-foreground leading-relaxed text-sm">
+                  Passionate and experienced psychology professional with
+                  extensive experience in providing innovative treatments and
+                  ongoing support to patients. Skilled in developing
+                  individualized treatment plans and leading therapy sessions.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Expert 2 - Vanya Sri Chettiar */}
+            <Card className="border-0 shadow-soft hover:shadow-card transition-all duration-300 bg-white rounded-xl">
+              <CardContent className="p-8 text-center">
+                <div className="mb-6">
+                  <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden shadow-md">
+                    <img
+                      src={aboutHeroWomanImage}
+                      alt="Vanya Sri Chettiar - Empathic Listener"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-1">
+                    Vanya Sri Chettiar
+                  </h3>
+                  <p className="text-primary font-medium mb-4">
+                    Empathic Listener
+                  </p>
+                </div>
+
+                <p className="text-muted-foreground leading-relaxed text-sm">
+                  Dynamic educational mentor and life coach specializing in
+                  tutoring, counseling, and habit coaching. Passionate about
+                  empowering individuals to achieve success through personalized
+                  strategies and holistic development.
+                </p>
               </CardContent>
             </Card>
           </div>
