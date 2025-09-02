@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { Heart, Menu, X, User } from 'lucide-react'
+import { Heart, Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const Header = () => {
@@ -62,11 +62,6 @@ const Header = () => {
                 Book Appointment
               </Button>
             </Link>
-            <Link to="/login">
-              <div className="w-10 h-10 bg-muted hover:bg-primary hover:text-primary-foreground rounded-full flex items-center justify-center transition-colors cursor-pointer">
-                <User className="h-5 w-5" />
-              </div>
-            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -110,12 +105,6 @@ const Header = () => {
                   className="w-full bg-gradient-accent text-accent-foreground"
                 >
                   Book Appointment
-                </Button>
-              </Link>
-              <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button variant="outline" size="sm" className="w-full">
-                  <User className="h-4 w-4 mr-2" />
-                  Login
                 </Button>
               </Link>
             </div>
