@@ -9,8 +9,8 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "cd server && ts-node index.ts",
-    "server:dev": "cd server && nodemon --watch . --ext ts,json --exec \"ts-node index.ts\"",
+    "server": "cd server && node --loader ts-node/esm index.ts",
+    "server:dev": "cd server && nodemon --watch . --ext ts,json --exec \"node --loader ts-node/esm index.ts\"",
     "dev:full": "concurrently \"npm run dev\" \"npm run server:dev\""
   },
   "dependencies": {
