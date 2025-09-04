@@ -1,12 +1,32 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { Heart, Menu, X } from 'lucide-react'
+import { Heart, Menu, X, User, LogOut } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [userName, setUserName] = useState('')
   const location = useLocation()
+
+  // Check login status on component mount
+  useEffect(() => {
+    const loggedIn = localStorage.getItem('isLoggedIn') === 'true'
+    const name = localStorage.getItem('userName') || ''
+    setIsLoggedIn(loggedIn)
+    setUserName(name)
+  }, [])
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn')
+    localStorage.removeItem('userEmail')
+    localStorage.removeItem('userName')
+    setIsLoggedIn(false)
+    setUserName('')
+    // Optionally redirect to home page
+    window.location.href = '/'
+  }
 
   const navItems = [
     { href: '/', label: 'Home' },
@@ -53,6 +73,31 @@ const Header = () => {
 
           {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-3">
+            {/* Auth Section */}
+            {isLoggedIn ? (
+              <div className="flex items-center space-x-3">
+                <span className="text-sm text-muted-foreground">
+                  Welcome, {userName}
+                </span>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleLogout}
+                  className="flex items-center space-x-2"
+                >
+                  <LogOut className="w-4 h-4" />
+                  <span>Logout</span>
+                </Button>
+              </div>
+            ) : (
+              <Button variant="outline" size="sm" asChild>
+                <Link to="/login" className="flex items-center space-x-2">
+                  <User className="w-4 h-4" />
+                  <span>Login</span>
+                </Link>
+              </Button>
+            )}
+
             <Link to="/book">
               <Button
                 variant="default"
@@ -98,6 +143,35 @@ const Header = () => {
               ))}
             </nav>
             <div className="flex flex-col space-y-2 mt-4 px-4">
+              {/* Mobile Auth Section */}
+              {isLoggedIn ? (
+                <div className="flex flex-col space-y-2">
+                  <div className="text-sm text-muted-foreground px-2">
+                    Welcome, {userName}
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={handleLogout}
+                    className="w-full flex items-center justify-center space-x-2"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    <span>Logout</span>
+                  </Button>
+                </div>
+              ) : (
+                <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full flex items-center justify-center space-x-2"
+                  >
+                    <User className="w-4 h-4" />
+                    <span>Login</span>
+                  </Button>
+                </Link>
+              )}
+
               <Link to="/book" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button
                   variant="default"
